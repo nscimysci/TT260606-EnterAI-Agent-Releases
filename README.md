@@ -9,13 +9,15 @@ Public download host สำหรับ **AI Builder local agent** (เก็บ
 | เครื่อง | ไฟล์ |
 |---|---|
 | Mac (M1/M2/M3/M4) | `ai-builder-agent-darwin-arm64.app.zip` |
-| Mac (Intel) | `ai-builder-agent-darwin-x64.app.zip` |
-| Windows | `ai-builder-agent-win32-x64.exe` |
+| Windows | `ai-builder-agent-win32-x64-setup.exe` |
+| Windows (ไม่ติดตั้ง) | `ai-builder-agent-win32-x64.zip` |
 | Linux | `ai-builder-agent-linux-x64` |
 
-ไฟล์ที่ไม่มีนามสกุล (`darwin-arm64`, `darwin-x64`) คือ binary CLI เปล่า ๆ สำหรับรันใน terminal — คนทั่วไปใช้ `.app.zip`
+ไฟล์ที่ไม่มีนามสกุล (`darwin-arm64`) คือ binary CLI เปล่า ๆ สำหรับรันใน terminal — คนทั่วไปใช้ `.app.zip`
 
-ไม่แน่ใจว่า Mac เป็นรุ่นไหน? เปิด terminal พิมพ์ `uname -m` → `arm64` = Apple Silicon, `x86_64` = Intel
+`ai-builder-agent-win32-x64.zip` คือชุดเดียวกันแบบ **portable** — แตกไฟล์แล้วดับเบิลคลิก `run.cmd` ได้เลย ไม่ต้องติดตั้ง
+
+> **Mac Intel ไม่รองรับแล้ว** — แจกเฉพาะ Apple Silicon (M1 ขึ้นไป) ไม่แน่ใจว่าเครื่องรุ่นไหน เปิด terminal พิมพ์ `uname -m` → `arm64` = Apple Silicon
 
 ## macOS — ครั้งแรกจะโดน Gatekeeper บล็อก
 
@@ -41,7 +43,7 @@ open "/Applications/AI Builder Agent.app"
 
 ## Windows — SmartScreen จะเตือน
 
-`.exe` ยังไม่ได้เซ็นด้วย code-signing certificate จะขึ้นจอน้ำเงิน *"Windows protected your PC"*
+ตัวติดตั้งยังไม่ได้เซ็นด้วย code-signing certificate จะขึ้นจอน้ำเงิน *"Windows protected your PC"*
 → กด **More info** → **Run anyway**
 
 ## Linux
@@ -57,5 +59,5 @@ chmod +x ai-builder-agent-linux-x64
 
 ```bash
 shasum -a 256 ai-builder-agent-darwin-arm64.app.zip   # macOS / Linux
-certutil -hashfile ai-builder-agent-win32-x64.exe SHA256   # Windows
+certutil -hashfile ai-builder-agent-win32-x64-setup.exe SHA256   # Windows
 ```
