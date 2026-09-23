@@ -1,21 +1,20 @@
-# AI Builder Agent
+# Enter AI Agent
 
-Public download host สำหรับ **AI Builder local agent** (เก็บเฉพาะไฟล์ติดตั้ง — ซอร์สโค้ดอยู่ใน repo ส่วนตัว)
+Public download host สำหรับ **Enter AI local agent** (เก็บเฉพาะไฟล์ติดตั้ง — ซอร์สโค้ดอยู่ใน repo ส่วนตัว)
 
 👉 **[ดาวน์โหลดเวอร์ชันล่าสุด](../../releases/latest)**
+
+> ตั้งแต่ v1.26.9.23.1 เปลี่ยนชื่อจาก **AI Builder Agent** เป็น **Enter AI** — รุ่นก่อนหน้าอัปเดตเองไม่ได้ ให้โหลดตัวใหม่ไปลง 1 ครั้ง (release เก่ายังใช้ชื่อไฟล์ `ai-builder-agent-*`)
 
 ## เลือกไฟล์ให้ตรงเครื่อง
 
 | เครื่อง | ไฟล์ |
 |---|---|
-| Mac (M1/M2/M3/M4) | `ai-builder-agent-darwin-arm64.app.zip` |
-| Windows | `ai-builder-agent-win32-x64-setup.exe` |
-| Windows (ไม่ติดตั้ง) | `ai-builder-agent-win32-x64.zip` |
-| Linux | `ai-builder-agent-linux-x64` |
+| Mac (M1/M2/M3/M4) | `enter-ai-agent-darwin-arm64.app.zip` |
+| Windows | `enter-ai-agent-win32-x64-setup.exe` |
+| Windows (ไม่ติดตั้ง) | `enter-ai-agent-win32-x64.zip` |
 
-ไฟล์ที่ไม่มีนามสกุล (`darwin-arm64`) คือ binary CLI เปล่า ๆ สำหรับรันใน terminal — คนทั่วไปใช้ `.app.zip`
-
-`ai-builder-agent-win32-x64.zip` คือชุดเดียวกันแบบ **portable** — แตกไฟล์แล้วดับเบิลคลิก `run.cmd` ได้เลย ไม่ต้องติดตั้ง
+`enter-ai-agent-win32-x64.zip` คือชุดเดียวกันแบบ **portable** — แตกไฟล์แล้วดับเบิลคลิก `run.cmd` ได้เลย ไม่ต้องติดตั้ง
 
 > **Mac Intel ไม่รองรับแล้ว** — แจกเฉพาะ Apple Silicon (M1 ขึ้นไป) ไม่แน่ใจว่าเครื่องรุ่นไหน เปิด terminal พิมพ์ `uname -m` → `arm64` = Apple Silicon
 
@@ -29,8 +28,8 @@ Public download host สำหรับ **AI Builder local agent** (เก็บ
 unzip แล้วลากแอปไปไว้ `/Applications` ก่อน จากนั้น:
 
 ```bash
-xattr -dr com.apple.quarantine "/Applications/AI Builder Agent.app"
-open "/Applications/AI Builder Agent.app"
+xattr -dr com.apple.quarantine "/Applications/Enter AI.app"
+open "/Applications/Enter AI.app"
 ```
 
 ถ้าวางแอปไว้ที่อื่น ให้พิมพ์ `xattr -dr com.apple.quarantine ` **เว้นวรรค 1 เคาะ** แล้ว**ลากไอคอนแอปจาก Finder มาวางในหน้าต่าง terminal** — path จะเติมให้เองอัตโนมัติ แล้วค่อยกด Enter
@@ -46,18 +45,11 @@ open "/Applications/AI Builder Agent.app"
 ตัวติดตั้งยังไม่ได้เซ็นด้วย code-signing certificate จะขึ้นจอน้ำเงิน *"Windows protected your PC"*
 → กด **More info** → **Run anyway**
 
-## Linux
-
-```bash
-chmod +x ai-builder-agent-linux-x64
-./ai-builder-agent-linux-x64
-```
-
 ## ตรวจสอบไฟล์ (ถ้าต้องการ)
 
 ทุก asset มี `sha256` แสดงอยู่ในหน้า release เทียบกับของจริงได้ด้วย:
 
 ```bash
-shasum -a 256 ai-builder-agent-darwin-arm64.app.zip   # macOS / Linux
-certutil -hashfile ai-builder-agent-win32-x64-setup.exe SHA256   # Windows
+shasum -a 256 enter-ai-agent-darwin-arm64.app.zip   # macOS / Linux
+certutil -hashfile enter-ai-agent-win32-x64-setup.exe SHA256   # Windows
 ```
